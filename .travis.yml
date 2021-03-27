@@ -13,3 +13,6 @@ script:
   - java --version
   - ./mvnw clean install
   - ./mvnw test
+
+before_install:
+  - chmod +x mvnw
