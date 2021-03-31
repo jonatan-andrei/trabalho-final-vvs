@@ -11,8 +11,7 @@ cache:
 
 script:
   - java --version
-  - ./mvnw clean install
-  - ./mvnw test
+  - mvn clean package
 
 before_install:
   - chmod +x mvnw
