@@ -6,6 +6,4 @@
         Tpack PMD rules
     </description>
 
-    <rule ref="category/java/documentation.xml" />
-
 </ruleset>

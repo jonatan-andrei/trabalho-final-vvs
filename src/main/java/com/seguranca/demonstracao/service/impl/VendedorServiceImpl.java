@@ -21,6 +21,7 @@ public class VendedorServiceImpl implements VendedorService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Override
     public void cadastrar(String email, String senha) {
         if (usuarioRepository.findByEmail(email).isPresent()) {
             throw new UsuarioJaCadastradoException();
