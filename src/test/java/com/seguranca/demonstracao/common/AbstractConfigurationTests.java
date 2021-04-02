@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,6 +19,7 @@ import static org.junit.Assert.assertEquals;
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
+@Transactional
 public class AbstractConfigurationTests implements ApplicationContextAware, InitializingBean {
 
     private ApplicationContext applicationContext;
@@ -37,7 +39,7 @@ public class AbstractConfigurationTests implements ApplicationContextAware, Init
     }
 
     @Test
-    public void teste(){
+    public void teste() {
         assertEquals(1, 1);
     }
 }
