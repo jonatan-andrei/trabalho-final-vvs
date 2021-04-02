@@ -1,11 +1,13 @@
 package com.seguranca.demonstracao.domain;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
+@Builder
 @Entity
 @SequenceGenerator(name = "generator_produto", sequenceName = "sequence_produto", initialValue = 1, allocationSize = 1)
 public class Produto {

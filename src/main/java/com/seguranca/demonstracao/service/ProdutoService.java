@@ -10,6 +10,6 @@ public interface ProdutoService {
 
     Produto buscarPorId(Long id);
 
-    void cadastrar(Produto produto);
+    Produto cadastrar(Produto produto);
 
 }
