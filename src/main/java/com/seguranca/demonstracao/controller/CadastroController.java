@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/cadastro")
 public class CadastroController {
+
     @Autowired
     private LoginService loginService;
 
