@@ -19,6 +19,22 @@ public class ProdutoControllerTest extends AbstractConfigurationTests {
     private ProdutoController produtoController;
 
     @Test
+    public void listarProdutos() {
+        // Arrange
+        Produto produto1 = Produto.builder().nome("Geladeira").imagem("imagem1").preco(BigDecimal.valueOf(2299.00)).build();
+        Produto produto2 = Produto.builder().nome("Fogão").imagem("imagem2").preco(BigDecimal.valueOf(1199.00)).build();
+        produtoController.cadastrar(produto1);
+        produtoController.cadastrar(produto2);
+
+        // Act
+        ResponseEntity<List<Produto>> response = produtoController.listar();
+
+        // Assert
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals(2, response.getBody().size());
+    }
+
+    @Test
     public void cadastrarProduto() {
         // Arrange
         Produto produto = Produto.builder()
@@ -34,22 +50,6 @@ public class ProdutoControllerTest extends AbstractConfigurationTests {
         assertEquals(200, response.getStatusCode().value());
         ResponseEntity<Produto> produtoCadastrado = produtoController.buscarPorId(response.getBody().getId());
         assertTrue(nonNull(produtoCadastrado.getBody()));
-    }
-
-    @Test
-    public void listarProdutos() {
-        // Arrange
-        Produto produto1 = Produto.builder().nome("Geladeira").imagem("imagem1").preco(BigDecimal.valueOf(2299.00)).build();
-        Produto produto2 = Produto.builder().nome("Fogão").imagem("imagem2").preco(BigDecimal.valueOf(1199.00)).build();
-        produtoController.cadastrar(produto1);
-        produtoController.cadastrar(produto2);
-
-        // Act
-        ResponseEntity<List<Produto>> response = produtoController.listar();
-
-        // Assert
-        assertEquals(200, response.getStatusCode().value());
-        assertEquals(2, response.getBody().size());
     }
 
     @Test
