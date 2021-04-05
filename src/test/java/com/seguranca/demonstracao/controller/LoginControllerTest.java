@@ -46,7 +46,7 @@ public class LoginControllerTest extends AbstractConfigurationTests {
         assertTrue(nonNull(response.getBody().getToken()));
     }
 
-    @Test
+    @Test(expected = BadCredentialsException.class)
     public void loginInvalido() {
         // Arrange
         String email = "jonatan@jonatan.com";
@@ -58,13 +58,7 @@ public class LoginControllerTest extends AbstractConfigurationTests {
                 .build();
 
         // Act
-        try {
-            ResponseEntity<LoginResponse> response = loginController.login(request);
-            assertTrue(false);
-        } catch (Exception e) {
-            // Assert
-            assertTrue(e instanceof BadCredentialsException);
-        }
+        ResponseEntity<LoginResponse> response = loginController.login(request);
     }
 
 }

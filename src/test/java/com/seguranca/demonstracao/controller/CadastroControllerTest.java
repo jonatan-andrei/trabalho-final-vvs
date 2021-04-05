@@ -33,7 +33,7 @@ public class CadastroControllerTest extends AbstractConfigurationTests {
         assertTrue(nonNull(response.getBody().getToken()));
     }
 
-    @Test
+    @Test(expected = UsuarioJaCadastradoException.class)
     public void tentarCadastrarClienteJaCadastrado() {
         // Arrange
         CadastroRequest request = CadastroRequest.builder()
@@ -43,13 +43,7 @@ public class CadastroControllerTest extends AbstractConfigurationTests {
         cadastroController.cadastrar(request);
 
         // Act
-        try {
-            ResponseEntity<LoginResponse> response = cadastroController.cadastrar(request);
-            assertTrue(false);
-        } catch (Exception e) {
-            // Assert
-            assertTrue(e instanceof UsuarioJaCadastradoException);
-        }
+        ResponseEntity<LoginResponse> response = cadastroController.cadastrar(request);
     }
 
 }
