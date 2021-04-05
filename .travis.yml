@@ -11,7 +11,7 @@ cache:
 
 script:
   - java --version
-  - mvn clean package
+  - mvn clean install
   - mvn pmd:pmd
 
 before_install:
